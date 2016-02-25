@@ -1,0 +1,65 @@
+Set PWM
+
+usb.device_address == 4 and usb.capdata contains 11:00:14:3c:00
+
+
+filter out LED noise
+
+usb.device_address == 4 and usb.capdata and not (usb.capdata contains 38:df:98) and not (usb.capdata contains 10:ff:00:00:00)
+
+
+
+Fan S|temp |             |Pmp S|
+05:dc:01:3a:38:df:98:93  0b:04:1c:14:f3:19:07:ae
+3f:09:a1:18:69:37:a9:02  03:00:00:01:00:56:9d:08
+                    |FW Version ?|
+
+
+== LED ==
+  |Normal M|        |High Tep|
+10:ff:ff:6b:00:80:80:ff:00:00:46:0a:14:00:00:00:00:00:01
+  |RR GG BB|        |RR GG BB|TS|     |ON|     |HT|
+
+TS = High Temp Set Value
+ON = LED On?
+HT = High Temp Mode
+
+== FAN ==
+
+custom fan curve
+
+11:00-19:1b:1d:1f:21:23:19:23:3c:4b:5a:64
+
+point  1  2  3  4  5  6
+PWM %                    1  2  3  4  5  6
+
+
+fixed 40%
+
+11:00-14:3c:00:00:00:00:28:28:00:00:00:00
+
+
+
+== PUMP ==
+
+Perf Mode
+13:42
+
+Quiet Mode
+13:28
+
+
+
+
+
+
+
+
+
+
+
+
+\x10\xff\x00\x00\x00\x80\x80\xff\x00\x00\x46\x0a\x14\x01\x00\x00\x00\x00\x01
+
+
+\x11\x00\x14\x3c\x00\x00\x00\x00\x28\x28\x00\x00\x00\x00
